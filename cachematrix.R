@@ -29,7 +29,7 @@ makeCacheMatrix <- function(x = numeric()) {
                 cachedmatrix <<- NULL
         }
         
-        # getmatrix is assigned fomr the setMatrix via the <<- x
+        # getmatrix is assigned from the setMatrix via the <<- x
         getmatrix <- function() {
                 x
         }
@@ -51,10 +51,13 @@ makeCacheMatrix <- function(x = numeric()) {
 
 
 ## cacheSolve will take advantage of the makeCacheMatrix by computing
-## the inverse.  If, though, the inverse has already been calculated 
-## then it will utilize the cached version, thus minimizing recalculations.
+## the inverse, as the instructions state, it is assumed the passed matrix is
+## invertible.
+## If, though, the inverse has already been calculated 
+## then it will utilize the cached version, thus minimizing recalculations
 
 cacheSolve <- function(y, ...) {
+       
         # first try to get the cached version
         inversematrix <- y$getinverse()
         # if so send a messaage to console and then return the value
